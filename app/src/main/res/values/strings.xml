@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">ProIn</string>
+    <string name="username">Username</string>
+    <string name="gender">Gender</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="login">Login</string>
+    <string name="create_and_account">Create and account?</string>
+    <string name="proin_description">ProIn Description</string>
+    <string name="forgot_password_">Forgot Password?</string>
+    <string name="we_just_need_yout_registered_email_address_nto_send_you_password_reset">We just need your registered email address \nto send you password reset</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="i_accept_term_and_condition">I accept Term and Condition</string>
+    <string name="full_name">Full Name</string>
+    <string name="nric">Nric (Exp : 960325061589)</string>
+    <string name="dob">Dob (Exp : yyyy-mm-dd)</string>
+    <string name="homeaddress">Address</string>
+    <string name="occupation">Occupation</string>
+    <string name="salary">Salary (RM)</string>
+    <string name="phone_no">Phone No.</string>
+    <string name="register">Register</string>
+    <string name="product">Product</string>
+    <string name="hospital">Hospital</string>
+    <string name="profile">Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_password">Change Password</string>
+    <string name="payment_methods">Payment Methods</string>
+    <string name="my_services">My Services</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="about_us">About Us</string>
+    <string name="logout">Logout</string>
+    <string name="update">Update</string>
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="accident_protection">Accident\nProtection</string>
+    <string name="critical_illness_protection">Critical\nIllness\nProtection</string>
+    <string name="medical_protection">Medical\nProtection</string>
+    <string name="product_details">Product Details</string>
+    <string name="overview">Overview</string>
+    <string name="purchase">Purchase</string>
+    <string name="what_is_this_product_about">WHAT IS THIS PRODUCT ABOUT?</string>
+    <string name="description">Description</string>
+    <string name="address">Address</string>
+    <string name="opetation_hours">Opetation Hours</string>
+    <string name="your_age">Your Age</string>
+    <string name="age">Age</string>
+    <string name="please_select_your_coverage_rm">Please select your coverage (RM)</string>
+    <string name="payment_mode">Payment Mode</string>
+    <string name="total_year">Total Year</string>
+    <string name="expire_date">Expire Date</string>
+    <string name="monthly_pay_premium">Monthly Pay / Premium</string>
+    <string name="make_payment">Make Payment</string>
+    <string name="get_age_url">http://yeelow76.000webhostapp.com/getUserAge.php?nric=</string>
+    <string name="get_user_url">http://yeelow76.000webhostapp.com/get_user.php</string>
+    <string name="insert_user_url">http://yeelow76.000webhostapp.com/insert_user.php</string>
+    <string name="login_url">http://yeelow76.000webhostapp.com/login.php</string>
+    <string name="desc">Your Customized Insurance</string>
+    <string name="descp">Your Customized Insurance</string>
+    <string-array name="coverage">
+        <item>100,000</item>
+        <item>200,000</item>
+        <item>300,000</item>
+    </string-array>
+</resources>

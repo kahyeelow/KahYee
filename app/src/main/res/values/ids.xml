@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="purchase" type="id">purchase</item>
+    <item name="btn_Purchase" type="id">buttonPur</item>
+    <item name="Purchase" type="id">btn_purchase</item>
+</resources>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/action_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:title="@string/profile" />
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:fitsSystemWindows="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:background="#bd000000">
+
+                    <ImageView
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/btn_transparent_white_line_oval"
+                        android:padding="2dp"
+                        app:srcCompat="@drawable/user_placeholder" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/edit_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="?selectableItemBackground"
+                    android:drawableRight="@drawable/ic_arrow_right_black_24dp_wrapper"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/edit_profile"
+                    android:textColor="@color/black90" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black10" />
+
+                <TextView
+                    android:id="@+id/change_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="?selectableItemBackground"
+                    android:drawableRight="@drawable/ic_arrow_right_black_24dp_wrapper"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/change_password"
+                    android:textColor="@color/black90" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:background="@color/black10" />
+
+                <TextView
+                    android:id="@+id/payment_method"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="?selectableItemBackground"
+                    android:drawableRight="@drawable/ic_arrow_right_black_24dp_wrapper"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/payment_methods"
+                    android:textColor="@color/black90" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black10" />
+
+                <TextView
+                    android:id="@+id/my_services"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="?selectableItemBackground"
+                    android:drawableRight="@drawable/ic_arrow_right_black_24dp_wrapper"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/my_services"
+                    android:textColor="@color/black90" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:background="@color/black10" />
+
+                <TextView
+                    android:id="@+id/privacy_policy"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="?selectableItemBackground"
+                    android:drawableRight="@drawable/ic_arrow_right_black_24dp_wrapper"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/privacy_policy"
+                    android:textColor="@color/black90" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black10" />
+
+                <TextView
+                    android:id="@+id/terms_conditions"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="?selectableItemBackground"
+                    android:drawableRight="@drawable/ic_arrow_right_black_24dp_wrapper"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/terms_conditions"
+                    android:textColor="@color/black90" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black10" />
+
+                <TextView
+                    android:id="@+id/about_us"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="?selectableItemBackground"
+                    android:drawableRight="@drawable/ic_arrow_right_black_24dp_wrapper"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/about_us"
+                    android:textColor="@color/black90" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:background="@color/black10" />
+
+                <TextView
+                    android:id="@+id/logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="?selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:text="@string/logout"
+                    android:textColor="@color/colorPrimary" />
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

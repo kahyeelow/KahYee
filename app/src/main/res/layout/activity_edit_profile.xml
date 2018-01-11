@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/action_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="@string/edit_profile" />
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:background="#bd000000">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/btn_transparent_white_line_oval"
+                    android:padding="2dp"
+                    app:srcCompat="@drawable/user_placeholder" />
+
+                <ImageView
+                    android:id="@+id/edit"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="-30dp"
+                    android:layout_marginRight="-34dp"
+                    android:background="@drawable/btn_black90_oval"
+                    android:padding="6dp"
+                    android:tint="@color/white"
+                    app:srcCompat="@drawable/ic_edit_black_24dp" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="32dp">
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/full_name_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:textColorHint="@color/colorPrimary">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/full_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:hint="@string/full_name"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:paddingTop="4dp"
+                        android:text="Kah Yee"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/colorPrimary"
+                        android:textSize="14sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorPrimary" />
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/phone_no_wrapper"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="24dp"
+                    android:textColorHint="@color/colorPrimary">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/phone_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/transparent"
+                        android:hint="@string/phone_no"
+                        android:inputType="phone"
+                        android:maxLines="1"
+                        android:paddingTop="4dp"
+                        android:text="0123456789"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/colorPrimary"
+                        android:textSize="14sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorPrimary" />
+
+                <android.support.v4.widget.Space
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/update"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/btn_color_primary_curve"
+                    android:gravity="center"
+                    android:text="@string/update"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</layout>
