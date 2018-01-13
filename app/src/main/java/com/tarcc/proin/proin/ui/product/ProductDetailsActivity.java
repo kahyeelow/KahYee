@@ -37,7 +37,7 @@ public class ProductDetailsActivity extends BaseActivity {
 
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragment(ProductOverviewFragment.newInstance(product), getString(R.string.overview));
-        viewPagerAdapter.addFragment(ProductPurchaseFragment.newInstance(), getString(R.string.purchase));
+        viewPagerAdapter.addFragment(ProductPurchaseFragment.newInstance(product), getString(R.string.purchase));
 
         binding.viewPager.setAdapter(viewPagerAdapter);
         binding.tabLayout.setupWithViewPager(binding.viewPager);

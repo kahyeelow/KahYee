@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public class Product {
 
+    //Put product Id here
+    private String productId;
     private String name;
     private String description;
     private ArrayList<Benefit> benefits;
@@ -50,6 +52,15 @@ public class Product {
 
     public Product setBenefits(ArrayList<Benefit> benefits) {
         this.benefits = benefits;
+        return this;
+    }
+
+    public String getProductId() {
+        return productId;
+    }
+
+    public Product setProductId(String productId) {
+        this.productId = productId;
         return this;
     }
 }

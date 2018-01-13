@@ -40,7 +40,7 @@ import java.util.Map;
 
 
 public class RegisterActivity extends AppCompatActivity {
-    private TextInputEditText editTextName, editTextNric, editTextDob, editTextAddress, editTextGender, editTextPhoneNo, editTextEmail,
+    private TextInputEditText editTextNric, editTextDob, editTextAddress, editTextGender, editTextPhoneNo, editTextEmail,
     editTextOccupation, editTextSalary, editTextUsername, editTextPassword;
     private TextView register;
     RequestQueue queue;
@@ -61,7 +61,8 @@ public class RegisterActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
         initToolbar();
 
-        editTextName   = (TextInputEditText)findViewById(R.id.fullName);
+        //this part u remove all later, use binding.fullName
+       // editTextName   = (TextInputEditText)findViewById(R.id.fullName);
         editTextNric = (TextInputEditText)findViewById(R.id.nric);
         editTextDob = (TextInputEditText)findViewById(R.id.dob);
         editTextAddress = (TextInputEditText)findViewById(R.id.address);
@@ -101,7 +102,12 @@ public class RegisterActivity extends AppCompatActivity {
 
         }
         else{
-            user.setName(editTextName.getText().toString());
+            //like this, if not later your lecturer will find out why got 2 different code
+            //noted, will change later
+            //if you have time do checking on all the input text
+            //because if it is empty u will crash the app
+            //but just ignore bah hahaha only people who working with this will do this checking
+            user.setName(binding.fullName.getText().toString());
             user.setNric(editTextNric.getText().toString());
             user.setDob(editTextDob.getText().toString());
             user.setAddress(editTextAddress.getText().toString());
@@ -115,15 +121,13 @@ public class RegisterActivity extends AppCompatActivity {
 
             try{
                 makeServiceCall(this, getString(R.string.insert_user_url), user);
-                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent);
+
 
             }catch (Exception e){
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(),"Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
             }
         }
-
     }
 
     private void makeServiceCall(Context context, String url, final User user) {
@@ -143,9 +147,10 @@ public class RegisterActivity extends AppCompatActivity {
                                 jsonObject = new JSONObject(response);
                                 int success = jsonObject.getInt("success");
                                 String message = jsonObject.getString("message");
-                                if (success==0) {
+                                if (success==1) {
                                     Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-
+                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                    startActivity(intent);
                                 }else{
                                     Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                                     finish();

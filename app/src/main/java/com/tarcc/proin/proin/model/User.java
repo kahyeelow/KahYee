@@ -1,5 +1,7 @@
 package com.tarcc.proin.proin.model;
 
+import com.google.gson.Gson;
+
 /**
  * Created by yee_l on 11/1/2018.
  */
@@ -17,24 +19,15 @@ public class User {
     private String username;
     private String password;
 
-    public User() {
-
+    //you got create this but u no use this hahaha
+    //got in the register activity
+    public String toJson(){
+        return new Gson().toJson(this);
     }
 
-    public User(String name, String nric, String dob,
-                String address, String gender, String phoneNo,
-                String email, String occupation, double salary, String username, String password) {
-        this.name = name;
-        this.nric = nric;
-        this.dob = dob;
-        this.address = address;
-        this.gender = gender;
-        this.phoneNo = phoneNo;
-        this.email = email;
-        this.occupation = occupation;
-        this.salary = salary;
-        this.username = username;
-        this.password = password;
+    //i show a example how to do this
+    public static User deserialize(String json){
+        return new Gson().fromJson(json, User.class);
     }
 
     public String getName() {

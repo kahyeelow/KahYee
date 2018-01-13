@@ -80,10 +80,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCm28wzRkpxcM6KD1fXu9CVilKEU5KqmJk" />
 
-        <activity android:name=".ui.profile.MyServicesActivity"
-                  android:screenOrientation="portrait"
-                android:theme="@style/AppTheme.WhiteBackground"/>
-
+        <activity
+            android:name=".ui.profile.MyServicesActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.WhiteBackground" />
     </application>
 
 </manifest>

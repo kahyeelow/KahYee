@@ -1,7 +1,9 @@
 package com.tarcc.proin.proin.ui.product;
 
+import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,8 +18,10 @@ import com.tarcc.proin.proin.model.Product;
 import java.util.ArrayList;
 
 
-
 public class ProductFragment extends Fragment implements View.OnClickListener {
+    //SharedPreferences data;
+    //SharedPreferences.Editor editor;
+    //String prodID;
 
     public static ProductFragment newInstance() {
 
@@ -33,6 +37,8 @@ public class ProductFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //data = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        //editor = data.edit();
     }
 
     @Nullable
@@ -80,6 +86,7 @@ public class ProductFragment extends Fragment implements View.OnClickListener {
                 .setDrawableId(R.drawable.accident4));
 
         Product product = new Product()
+                .setProductId("P001")
                 .setName("Accident Protection")
                 .setDescription("No matter how old or how healthy you are, a serious accident can change your life significantly. \n" +
                         "You can add A-Plus AccidentShield and A-Plus Total AccidentShield to one of our traditional life or investment-linked plans to boost your coverage against accidents.")
@@ -100,6 +107,7 @@ public class ProductFragment extends Fragment implements View.OnClickListener {
 
 
         Product product = new Product()
+                .setProductId("P002")
                 .setName("Critical Illness")
                 .setDescription("While we hope for a long and healthy life, it is always best to be prepared for whatever that comes our way, even something as tragic as a critical illness.\n" +
                         "With A-Plus CriticalCare, you will be supported financially so you and your loved ones can focus on your recovery.")
@@ -127,6 +135,7 @@ public class ProductFragment extends Fragment implements View.OnClickListener {
                 .setDrawableId(R.drawable.medical4));
 
         Product product = new Product()
+                .setProductId("P003")
                 .setName("Medical Protection")
                 .setDescription("A-Plus MedBooster complements A-Plus Med and A-Life Med Regular to increase your medical protection levels to help you cope with rising medical costs.")
                 .setBenefits(benefits);

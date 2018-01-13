@@ -47,7 +47,6 @@
                 android:background="@drawable/btn_black5_curve"
                 android:enabled="false"
                 android:padding="4dp"
-                android:text="Monthly"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 

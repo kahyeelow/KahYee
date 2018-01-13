@@ -53,12 +53,9 @@
     <string name="expire_date">Expire Date</string>
     <string name="monthly_pay_premium">Monthly Pay / Premium</string>
     <string name="make_payment">Make Payment</string>
-    <string name="get_age_url">http://yeelow76.000webhostapp.com/getUserAge.php?nric=</string>
-    <string name="get_user_url">http://yeelow76.000webhostapp.com/get_user.php</string>
-    <string name="insert_user_url">http://yeelow76.000webhostapp.com/insert_user.php</string>
-    <string name="login_url">http://yeelow76.000webhostapp.com/login.php</string>
     <string name="desc">Your Customized Insurance</string>
     <string name="descp">Your Customized Insurance</string>
+    <string name="rmb_me">Remember Me</string>
     <string-array name="coverage">
         <item>100,000</item>
         <item>200,000</item>
