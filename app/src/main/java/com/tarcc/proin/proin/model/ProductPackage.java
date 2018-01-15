@@ -29,6 +29,10 @@ public class ProductPackage {
         return new Gson().fromJson(json, new TypeToken<ArrayList<ProductPackage>>(){}.getType());
     }
 
+    public ProductPackage() {
+
+    }
+
     public ProductPackage(String nric, String productID, String coverage, String premium, String status, String expireDate, String totPaymentYear) {
         this.nric = nric;
         this.productID = productID;
@@ -38,6 +42,7 @@ public class ProductPackage {
         this.expireDate = expireDate;
         this.totPaymentYear = totPaymentYear;
     }
+
 
     public String getNric() {
         return nric;

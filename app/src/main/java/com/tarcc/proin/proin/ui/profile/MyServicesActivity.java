@@ -13,6 +13,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -35,6 +36,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +45,8 @@ public class MyServicesActivity extends BaseActivity {
     private SharedPreferences data;
     private SharedPreferences.Editor editor;
     private List<ProductPackage> productPackageArry;
-    ProductPackage productPackage;
+   private ProductPackage productPackage;
+    private ListView listViewMyService;
 
     private User user;
     private String myic;
@@ -58,8 +61,12 @@ public class MyServicesActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_my_services);
+        initToolbar();
+
         data = PreferenceManager.getDefaultSharedPreferences(this);
         editor = data.edit();
+        productPackageArry = new ArrayList<>();
+
         String userJson = data.getString("user_details", "");
         //if user details empty then will stop user continue in this page
         if(TextUtils.isEmpty(userJson)){
@@ -100,7 +107,6 @@ public class MyServicesActivity extends BaseActivity {
 
         try {
             JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
-
                     url,
                     new Response.Listener<JSONArray>() {
                         @Override
@@ -113,10 +119,9 @@ public class MyServicesActivity extends BaseActivity {
 
                                 for(int i = 0; i<response.length(); i++){
                                     jsonObject = (JSONObject) response.get(i);
-                                    Boolean success = jsonObject.getBoolean("success");
-                                    String message = jsonObject.getString("message");
+
                                     //but u need to check this success whether is success
-                                    if (success) {
+
 
                                         //so the productpage.deserialzie willl be call is the success is true
                                         //then i add it into an arrayList? because there will probably be more than one product
@@ -127,7 +132,7 @@ public class MyServicesActivity extends BaseActivity {
                                         String nric = jsonObject.getString("nric");
                                         String productID = jsonObject.getString("productID");
                                         String coverage = jsonObject.getString("coverage");
-                                        String premium = jsonObject.getString("status");
+                                        String premium = jsonObject.getString("premium");
                                         String status = jsonObject.getString("status");
                                         String expireDate = jsonObject.getString("expireDate");
                                         String totPaymentYear = jsonObject.getString("totPaymentYear");
@@ -135,17 +140,13 @@ public class MyServicesActivity extends BaseActivity {
                                         productPackage = new ProductPackage(nric, productID,coverage,premium,status,expireDate,totPaymentYear);
                                         productPackageArry.add(productPackage);
 
-                                        Toast.makeText(MyServicesActivity.this , message, Toast.LENGTH_LONG).show();
-
 
                                         //Intent MainIntent = new Intent(LoginActivity.this, MainActivity.class);
                                         //LoginActivity.this.startActivity(MainIntent);
 
-                                    } else {
 
-                                        Toast.makeText(MyServicesActivity.this , message, Toast.LENGTH_LONG).show();
-                                    }
                             }
+                                loadMyServices();
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -172,4 +173,12 @@ public class MyServicesActivity extends BaseActivity {
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
 
     }
+
+    private void loadMyServices(){
+        final MyServiceAdaptor myServiceAdaptor = new MyServiceAdaptor(MyServicesActivity.this, R.layout.activity_my_services, productPackageArry);
+        binding.productList.setAdapter(myServiceAdaptor);
+    }
+
+
+
 }

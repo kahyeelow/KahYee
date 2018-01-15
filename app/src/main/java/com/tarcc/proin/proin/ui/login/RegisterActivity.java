@@ -10,9 +10,11 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,39 +42,18 @@ import java.util.Map;
 
 
 public class RegisterActivity extends AppCompatActivity {
-    private TextInputEditText editTextNric, editTextDob, editTextAddress, editTextGender, editTextPhoneNo, editTextEmail,
-    editTextOccupation, editTextSalary, editTextUsername, editTextPassword;
     private TextView register;
+    private String gender;
     RequestQueue queue;
     List<String> allUsername;
     public static final String TAG = "com.tarcc.proin.proin.ui.login"; //ask tutor
 
-
-    public static void start(Context context) {
-        Intent starter = new Intent(context, RegisterActivity.class);
-        context.startActivity(starter);
-    }
-
-    private ActivityRegisterBinding binding;
-
-    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
         initToolbar();
 
-        //this part u remove all later, use binding.fullName
-       // editTextName   = (TextInputEditText)findViewById(R.id.fullName);
-        editTextNric = (TextInputEditText)findViewById(R.id.nric);
-        editTextDob = (TextInputEditText)findViewById(R.id.dob);
-        editTextAddress = (TextInputEditText)findViewById(R.id.address);
-        editTextGender = (TextInputEditText)findViewById(R.id.gender);
-        editTextPhoneNo = (TextInputEditText)findViewById(R.id.phoneNo);
-        editTextEmail = (TextInputEditText)findViewById(R.id.email);
-        editTextOccupation = (TextInputEditText)findViewById(R.id.occupation);
-        editTextSalary = (TextInputEditText)findViewById(R.id.salary);
-        editTextUsername= (TextInputEditText)findViewById(R.id.username);
-        editTextPassword = (TextInputEditText)findViewById(R.id.password);
+
         register = (TextView)findViewById(R.id.register);
         allUsername = new ArrayList<>();
 
@@ -90,44 +71,72 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
+
+    public static void start(Context context) {
+        Intent starter = new Intent(context, RegisterActivity.class);
+        context.startActivity(starter);
+    }
+
+    private ActivityRegisterBinding binding;
+
+    public String selectGender()
+    {
+        int checked = binding.radgrpGender.getCheckedRadioButtonId();
+
+        if(checked == R.id.radMale)
+        {
+            gender = "Male";
+        }
+        else if(checked == R.id.radFemale)
+        {
+            gender = "Female";
+        }
+
+        return gender;
+    }
+
+
     public void saveRecord(){
         User user = new User();
 
-        String username = editTextUsername.getText().toString();
+        String username = binding.username.getText().toString();
 
-        if(foundUsername(username))
-        {
-            AlertDialog.Builder builder=new AlertDialog.Builder(RegisterActivity.this);
-            builder.setMessage("Username already exist. Please try another.").setNegativeButton("Retry",null).create().show();
-
+        if(!validation()){
+            //TODO error message
+            Toast.makeText(this,"Register has failed", Toast.LENGTH_LONG).show();
         }
         else{
-            //like this, if not later your lecturer will find out why got 2 different code
-            //noted, will change later
-            //if you have time do checking on all the input text
-            //because if it is empty u will crash the app
-            //but just ignore bah hahaha only people who working with this will do this checking
-            user.setName(binding.fullName.getText().toString());
-            user.setNric(editTextNric.getText().toString());
-            user.setDob(editTextDob.getText().toString());
-            user.setAddress(editTextAddress.getText().toString());
-            user.setGender(editTextGender.getText().toString());
-            user.setPhoneNo(editTextPhoneNo.getText().toString());
-            user.setEmail(editTextEmail.getText().toString());
-            user.setOccupation(editTextOccupation.getText().toString());
-            user.setSalary(Double.parseDouble(editTextSalary.getText().toString()));
-            user.setUsername(editTextUsername.getText().toString());
-            user.setPassword(editTextPassword.getText().toString());
+            if(foundUsername(username))
+            {
+                AlertDialog.Builder builder=new AlertDialog.Builder(RegisterActivity.this);
+                builder.setMessage("Username already exist. Please try another.").setNegativeButton("Retry",null).create().show();
 
-            try{
-                makeServiceCall(this, getString(R.string.insert_user_url), user);
+            }
+            else{
+                user.setName(binding.fullName.getText().toString());
+                user.setNric(binding.nric.getText().toString());
+                user.setDob(binding.dob.getText().toString());
+                user.setAddress(binding.address.getText().toString());
+                user.setGender(selectGender().toString());
+                user.setPhoneNo(binding.phoneNo.getText().toString());
+                user.setEmail(binding.email.getText().toString());
+                user.setOccupation(binding.occupation.getText().toString());
+                user.setSalary(Double.parseDouble(binding.salary.getText().toString()));
+                user.setUsername(binding.username.getText().toString());
+                user.setPassword(binding.password.getText().toString());
+
+                try{
+                    makeServiceCall(this, getString(R.string.insert_user_url), user);
 
 
-            }catch (Exception e){
-                e.printStackTrace();
-                Toast.makeText(getApplicationContext(),"Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }catch (Exception e){
+                    e.printStackTrace();
+                    Toast.makeText(getApplicationContext(),"Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                }
             }
         }
+
+
     }
 
     private void makeServiceCall(Context context, String url, final User user) {
@@ -263,6 +272,52 @@ public class RegisterActivity extends AppCompatActivity {
             }
         }
         return found;
+    }
+
+    public boolean validation(){
+        boolean valid = true;
+        if(binding.fullName.getText().toString().isEmpty()){
+            binding.fullName.setError("Please enter full name");
+            valid = false;
+        }
+        if(binding.nric.getText().toString().isEmpty() || binding.nric.getText().toString().length() != 12){
+            binding.nric.setError("Please enter valid IC number");
+            valid = false;
+        }
+        if(binding.dob.getText().toString().isEmpty() || binding.dob.getText().toString().length() !=10){
+            binding.dob.setError("Please enter valid dob");
+            valid = false;
+        }
+        if(binding.phoneNo.getText().toString().isEmpty()){
+            binding.phoneNo.setError("Please enter phone number");
+            valid = false;
+        }
+        if(binding.email.getText().toString().isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(binding.email.getText().toString()).matches()){
+            binding.email.setError("Please enter valid email");
+            valid = false;
+        }
+        if(binding.address.getText().toString().isEmpty()){
+            binding.address.setError("Please enter address");
+            valid = false;
+        }
+        if(binding.occupation.getText().toString().isEmpty()){
+            binding.occupation.setError("Please enter occupation");
+            valid = false;
+        }
+        if(binding.salary.getText().toString().isEmpty()){
+            binding.salary.setError("Please enter salary");
+            valid = false;
+        }
+        if(binding.username.getText().toString().isEmpty()){
+            binding.username.setError("Please enter username");
+            valid = false;
+        }
+        if(binding.password.getText().toString().isEmpty()){
+            binding.password.setError("Please enter password");
+            valid = false;
+        }
+
+        return valid;
     }
 
 }

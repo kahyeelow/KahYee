@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,7 +43,6 @@ import java.util.Map;
 
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextInputEditText etUsername, etPassword;
     private TextView tvLogin;
     RequestQueue queue;
     SharedPreferences data;
@@ -72,8 +72,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         binding.resgiter.setOnClickListener(this);
         binding.forgotPassword.setOnClickListener(this);
 
-        etUsername = (TextInputEditText) findViewById(R.id.username);
-        etPassword = (TextInputEditText) findViewById(R.id.password);
         tvLogin = (TextView) findViewById(R.id.tvLogin);
 
         data = PreferenceManager.getDefaultSharedPreferences(this);
@@ -97,11 +95,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
     public void loginUser(){
-        final String username = etUsername.getText().toString();
-        final String password = etPassword.getText().toString();
-
         try{
-            makeServiceCall(LoginActivity.this, getString(R.string.login_url), username, password);
+            makeServiceCall(LoginActivity.this, getString(R.string.login_url), binding.username.getText().toString(), binding.password.getText().toString());
 
         }catch (Exception e){
             e.printStackTrace();
@@ -251,6 +246,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
 
     }
+
+
 
 
 }
