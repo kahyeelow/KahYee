@@ -33,6 +33,7 @@ import com.tarcc.proin.proin.databinding.ActivityLoginBinding;
 import com.tarcc.proin.proin.model.User;
 import com.tarcc.proin.proin.ui.MainActivity;
 import com.tarcc.proin.proin.ui.product.ProductPurchaseFragment;
+import com.tarcc.proin.proin.ui.profile.ChangePasswordActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,6 +47,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     RequestQueue queue;
     SharedPreferences data;
     SharedPreferences.Editor editor;
+    private String username;
+    private String password;
 
 
     public static void restart(Context context) {
@@ -90,15 +93,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-
     public void loginUser(){
-        try{
-            makeServiceCall(LoginActivity.this, getString(R.string.login_url), binding.username.getText().toString(), binding.password.getText().toString());
-
-        }catch (Exception e){
-            e.printStackTrace();
-            Toast.makeText(getApplicationContext(),"Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        username = binding.username.getText().toString();
+        password = binding.password.getText().toString();
+        if(!validation()){
+            Toast.makeText(LoginActivity.this,"Please enter required fields", Toast.LENGTH_LONG).show();
         }
+        else{
+            try{
+                makeServiceCall(LoginActivity.this, getString(R.string.login_url), username , password);
+
+            }catch (Exception e){
+                e.printStackTrace();
+                Toast.makeText(getApplicationContext(),"Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        }
+
     }
 
     public void makeServiceCall(Context context, String url,final String username, final String password){
@@ -223,6 +233,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
 
+    }
+
+    public boolean validation(){
+        username = binding.username.getText().toString();
+        password = binding.password.getText().toString();
+
+        boolean valid = true;
+
+        if(username.isEmpty()){
+            binding.username.setError("Please enter username");
+            valid = false;
+        }
+        if(password.isEmpty()){
+            binding.password.setError("Please enter password");
+            valid = false;
+        }
+        return valid;
     }
 
 

@@ -109,13 +109,6 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="12sp" />
 
-            <CheckBox
-                android:id="@+id/cbRmbMe"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/rmb_me"
-                android:textColor="@color/colorPrimary" />
-
         </LinearLayout>
 
         <LinearLayout
