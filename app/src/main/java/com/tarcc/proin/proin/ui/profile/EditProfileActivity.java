@@ -25,7 +25,6 @@ public class EditProfileActivity extends BaseActivity {
     }
 
     private ActivityEditProfileBinding binding;
-    //Okok here havent start do update project
     private SharedPreferences data;
     private SharedPreferences.Editor editor;
     private User user;
@@ -43,14 +42,12 @@ public class EditProfileActivity extends BaseActivity {
         if(TextUtils.isEmpty(userJson)){
             finish();
         }
-        user = User.deserialize(userJson);
+
         //so this user object will have all the user info
+        user = User.deserialize(userJson);
+
         user.getNric();
-        //something like this
-        //owhhh got it
-        //so in the edit password,
-        //user.getPassword()?
-        //ya so for the my services the data return should be like this
+
     }
 
     private void initToolbar() {

@@ -111,8 +111,7 @@ public class MyServicesActivity extends BaseActivity {
                     new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {
-                            //this one will be JSONArray if you return a list of object
-                            //but i have query to retrieve the things that i've purchased
+
                             JSONObject jsonObject;
                             try {
 
@@ -120,14 +119,6 @@ public class MyServicesActivity extends BaseActivity {
                                 for(int i = 0; i<response.length(); i++){
                                     jsonObject = (JSONObject) response.get(i);
 
-                                    //but u need to check this success whether is success
-
-
-                                        //so the productpage.deserialzie willl be call is the success is true
-                                        //then i add it into an arrayList? because there will probably be more than one product
-                                        //this will be very hard to explain to you ald because the return object normally we will do like this
-                                        //so in the i call ProductPackage.deserializeList(response);
-                                        //inside this user will have all the data u want
 
                                         String nric = jsonObject.getString("nric");
                                         String productID = jsonObject.getString("productID");
@@ -140,10 +131,8 @@ public class MyServicesActivity extends BaseActivity {
                                         productPackage = new ProductPackage(nric, productID,coverage,premium,status,expireDate,totPaymentYear);
                                         productPackageArry.add(productPackage);
 
-
                                         //Intent MainIntent = new Intent(LoginActivity.this, MainActivity.class);
                                         //LoginActivity.this.startActivity(MainIntent);
-
 
                             }
                                 loadMyServices();

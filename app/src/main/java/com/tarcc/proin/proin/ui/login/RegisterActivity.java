@@ -42,7 +42,6 @@ import java.util.Map;
 
 
 public class RegisterActivity extends AppCompatActivity {
-    private TextView register;
     private String gender;
     RequestQueue queue;
     List<String> allUsername;
@@ -53,8 +52,6 @@ public class RegisterActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register);
         initToolbar();
 
-
-        register = (TextView)findViewById(R.id.register);
         allUsername = new ArrayList<>();
 
         getUser(getApplicationContext(), getString(R.string.get_user_url));
@@ -103,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         if(!validation()){
             //TODO error message
-            Toast.makeText(this,"Register has failed", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"Please enter required fields", Toast.LENGTH_LONG).show();
         }
         else{
             if(foundUsername(username))
@@ -158,8 +155,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 String message = jsonObject.getString("message");
                                 if (success==1) {
                                     Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                    startActivity(intent);
+                                    LoginActivity.start(RegisterActivity.this);
                                 }else{
                                     Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                                     finish();
@@ -214,7 +210,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONArray response) {
                         try {
-                            //everytime i listen to the server, i clear the list
+
                             allUsername.clear();
                             for (int i = 0; i < response.length(); i++) {
                                 JSONObject userResponse = (JSONObject) response.get(i);

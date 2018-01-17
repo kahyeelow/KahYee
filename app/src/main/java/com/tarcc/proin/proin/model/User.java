@@ -19,13 +19,12 @@ public class User {
     private String username;
     private String password;
 
-    //you got create this but u no use this hahaha
-    //got in the register activity
+
     public String toJson(){
         return new Gson().toJson(this);
     }
 
-    //i show a example how to do this
+
     public static User deserialize(String json){
         return new Gson().fromJson(json, User.class);
     }

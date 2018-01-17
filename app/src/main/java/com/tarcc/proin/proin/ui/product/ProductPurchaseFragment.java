@@ -43,26 +43,17 @@ import java.util.Map;
 
 
 public class ProductPurchaseFragment extends Fragment{
-    //Why this nric, prodId will be public? got other class access?
-    //nope
-    //private String nric, prodID, coverage, premium, status, expireDate,totPaymentYear;
-
     private static final String TAG = "com.tarcc.proin.proin.ui.product";
-    //in page has databinding, so no need findViewById anymore
-    //private TextView tvYear,tvPay,tvExpDate, tvStatus;
-    //private Button buttonPur;
     private SharedPreferences data;
     private SharedPreferences.Editor editor;
     private ProductPackage productPackage;
     private User user;
-    //the sharedpreferences data & editor, other page also use this, need to private?
-    //other page is using sharepreferences but not using the sharedpreferences in this page
 
     public static ProductPurchaseFragment newInstance(Product product) {
 
         Bundle args = new Bundle();
-        //Here i make the product to become string
-        //which you will store the user as a string in the sharedpreferences
+        //make the product to become string
+        //store the user as a string in the sharedpreferences
         args.putString("product", product.toJson());
 
         ProductPurchaseFragment fragment = new ProductPurchaseFragment();
@@ -81,7 +72,7 @@ public class ProductPurchaseFragment extends Fragment{
         editor = data.edit();
 
         //Inside this project object has the productId
-        //then u will get the string out and deserialize to become a object
+        //get the string out and deserialize to become a object
         String projectJson = getArguments().getString("product");
         product = Product.deserialize(projectJson);
         productPackage = new ProductPackage();
@@ -163,14 +154,6 @@ public class ProductPurchaseFragment extends Fragment{
         @Override
         public void onClick(View view) {
             if(view == binding.btnPay){
-
-                //String nric = data.getString("nric", "");
-                //String prodID = data.getString("prodID", "");
-                //String coverage = binding.spnCoverage.getSelectedItem().toString();
-                //String premium = data.getString("premium","");
-                //String status = data.getString("status", "");
-                //String expireDate = data.getString("expiredDate", "");
-                //String totPaymentYear = data.getString("totPayYear", "");
 
                 String nric = user.getNric();
                 String prodID = product.getProductId();
