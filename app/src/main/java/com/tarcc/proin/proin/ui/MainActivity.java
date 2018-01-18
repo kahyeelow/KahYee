@@ -20,7 +20,7 @@ import com.tarcc.proin.proin.widget.ViewPagerAdapter;
 public class MainActivity extends BaseActivity {
 
     public static void start(Context context) {
-        //Here is the same as the code that i comment out
+
         Intent starter = new Intent(context, MainActivity.class);
         context.startActivity(starter);
     }

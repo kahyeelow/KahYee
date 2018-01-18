@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:divider="@color/black10"
-            android:dividerHeight="1dp"
+            android:dividerHeight="4dp"
             android:paddingTop="50dp"
             tools:layout_editor_absoluteY="4dp" />
 

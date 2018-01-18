@@ -20,6 +20,8 @@ import java.util.List;
 public class MyServiceAdaptor extends ArrayAdapter<ProductPackage>{
     private List<ProductPackage> list;
     Activity context;
+    private String displayProdName;
+
 
     public MyServiceAdaptor(Activity context,int resource, List<ProductPackage> list)
     {
@@ -36,24 +38,31 @@ public class MyServiceAdaptor extends ArrayAdapter<ProductPackage>{
        View rowView = inflater.inflate(R.layout.myservices_list_item,parent,false);
 
         TextView textViewProductID = (TextView) rowView.findViewById(R.id.textViewProdID);
-        TextView textViewCoverage = (TextView) rowView.findViewById(R.id.textViewCoverage);
-        TextView textViewPremium = (TextView) rowView.findViewById(R.id.textViewPremium);
-        TextView textViewStatus = (TextView) rowView.findViewById(R.id.textViewStatus);
-        TextView textViewExpireDate = (TextView) rowView.findViewById(R.id.textViewExpireDate);
-        TextView textViewTotPayYear = (TextView) rowView.findViewById(R.id.textViewTotPayYear);
+        TextView textViewProdName = (TextView)rowView.findViewById(R.id.textViewProductName);
 
         ProductPackage productPackage;
         productPackage = getItem(position);
+        String prodID = productPackage.getProductID();
 
         textViewProductID.setText("Product ID : " + productPackage.getProductID());
-        textViewCoverage.setText("Coverage : " + productPackage.getCoverage());
-        textViewPremium.setText("Premium(RM): " + productPackage.getPremium());
-        textViewStatus.setText("Payment Mode : " + productPackage.getStatus());
-        textViewExpireDate.setText("Insurance Expired Date : " + productPackage.getExpireDate());
-        textViewTotPayYear.setText("Total Payment Year : " + productPackage.getTotPaymentYear());
+        textViewProdName.setText("Product Name: " + displayProdName(prodID));
+
 
         return rowView;
     }
+
+    public String displayProdName(String prodID){
+        if(prodID.equals("P001"))
+            displayProdName = "Accident Protection - Pro Total-Med Shield";
+        else if(prodID.equals("P002"))
+            displayProdName = "Critical Illness Protection - Pro CriticalCare";
+        else if(prodID.equals("P003"))
+            displayProdName = "Medical Protection - Pro Med-Booster";
+
+        return displayProdName;
+    }
+
+
 
 
 }

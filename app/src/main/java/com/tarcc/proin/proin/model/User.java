@@ -2,9 +2,6 @@ package com.tarcc.proin.proin.model;
 
 import com.google.gson.Gson;
 
-/**
- * Created by yee_l on 11/1/2018.
- */
 
 public class User {
     private String name;

@@ -45,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
     private String gender;
     RequestQueue queue;
     List<String> allUsername;
-    public static final String TAG = "com.tarcc.proin.proin.ui.login"; //ask tutor
+    public static final String TAG = "com.tarcc.proin.proin.ui.login";
 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

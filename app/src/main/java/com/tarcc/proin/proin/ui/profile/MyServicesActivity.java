@@ -13,6 +13,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -46,7 +47,6 @@ public class MyServicesActivity extends BaseActivity {
     private SharedPreferences.Editor editor;
     private List<ProductPackage> productPackageArry;
    private ProductPackage productPackage;
-    private ListView listViewMyService;
 
     private User user;
     private String myic;
@@ -85,6 +85,24 @@ public class MyServicesActivity extends BaseActivity {
         e.printStackTrace();
         Toast.makeText(this, "Error : " + e.getMessage(), Toast.LENGTH_LONG).show();
     }
+        binding.productList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                editor.putString("coverage", productPackageArry.get(i).getCoverage());
+                editor.commit();
+                editor.putString("premium", productPackageArry.get(i).getPremium());
+                editor.commit();
+                editor.putString("status", productPackageArry.get(i).getStatus());
+                editor.commit();
+                editor.putString("expireDate", productPackageArry.get(i).getExpireDate());
+                editor.commit();
+                editor.putString("totPaymentYear", productPackageArry.get(i).getTotPaymentYear());
+                editor.commit();
+
+                ShowProductActivity.start(MyServicesActivity.this);
+            }
+        });
+
 
     }
 
@@ -118,7 +136,6 @@ public class MyServicesActivity extends BaseActivity {
 
                                 for(int i = 0; i<response.length(); i++){
                                     jsonObject = (JSONObject) response.get(i);
-
 
                                         String nric = jsonObject.getString("nric");
                                         String productID = jsonObject.getString("productID");

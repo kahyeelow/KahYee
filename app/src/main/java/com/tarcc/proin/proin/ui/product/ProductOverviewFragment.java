@@ -17,7 +17,6 @@ import com.tarcc.proin.proin.model.Product;
 import java.util.ArrayList;
 
 
-
 public class ProductOverviewFragment extends Fragment {
 
     public static ProductOverviewFragment newInstance(Product product) {

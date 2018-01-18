@@ -19,9 +19,7 @@ import java.util.ArrayList;
 
 
 public class ProductFragment extends Fragment implements View.OnClickListener {
-    //SharedPreferences data;
-    //SharedPreferences.Editor editor;
-    //String prodID;
+
 
     public static ProductFragment newInstance() {
 
@@ -37,8 +35,7 @@ public class ProductFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //data = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        //editor = data.edit();
+
     }
 
     @Nullable

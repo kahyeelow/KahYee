@@ -84,6 +84,10 @@
             android:name=".ui.profile.MyServicesActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.WhiteBackground" />
+        <activity
+            android:name=".ui.profile.ShowProductActivity"
+            android:label="@string/title_activity_show_product"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

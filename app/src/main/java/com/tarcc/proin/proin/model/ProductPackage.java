@@ -5,9 +5,6 @@ import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 
-/**
- * Created by yee_l on 13/1/2018.
- */
 
 public class ProductPackage {
     private String nric;
