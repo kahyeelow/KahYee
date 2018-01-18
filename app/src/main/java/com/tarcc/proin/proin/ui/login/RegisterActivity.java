@@ -45,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         allUsername = new ArrayList<>();
 
+        //get all username to make sure no repeated username
         getUser(getApplicationContext(), getString(R.string.get_user_url));
 
         if (!isConnected()) {
@@ -87,6 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
     public void saveRecord(){
         User user = new User();
 
+        //use binding to bind the editText
         String username = binding.username.getText().toString();
 
         if(!validation()){
@@ -98,7 +100,6 @@ public class RegisterActivity extends AppCompatActivity {
             {
                 AlertDialog.Builder builder=new AlertDialog.Builder(RegisterActivity.this);
                 builder.setMessage("Username already exist. Please try another.").setNegativeButton("Retry",null).create().show();
-
             }
             else{
                 user.setName(binding.fullName.getText().toString());
@@ -114,9 +115,8 @@ public class RegisterActivity extends AppCompatActivity {
                 user.setPassword(binding.password.getText().toString());
 
                 try{
+                    //insert user into database
                     makeServiceCall(this, getString(R.string.insert_user_url), user);
-
-
                 }catch (Exception e){
                     e.printStackTrace();
                     Toast.makeText(getApplicationContext(),"Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -145,6 +145,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 int success = jsonObject.getInt("success");
                                 String message = jsonObject.getString("message");
                                 if (success==1) {
+                                    //if success, go to login
                                     Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                                     LoginActivity.start(RegisterActivity.this);
                                 }else{

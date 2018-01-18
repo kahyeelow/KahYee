@@ -51,6 +51,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         context.startActivity(starter);
     }
 
+    //bind the layout with this activity
     private ActivityLoginBinding binding;
 
     @Override
@@ -58,6 +59,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //setup layout
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         binding.resgiter.setOnClickListener(this);
         binding.forgotPassword.setOnClickListener(this);
@@ -82,15 +84,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void loginUser(){
+        //use binding to bind the EditText
         username = binding.username.getText().toString();
         password = binding.password.getText().toString();
+
+        //validation
         if(!validation()){
+            //if not success, error message
             Toast.makeText(LoginActivity.this,"Please enter required fields", Toast.LENGTH_LONG).show();
         }
         else{
+            //else, success, login
             try{
                 makeServiceCall(LoginActivity.this, getString(R.string.login_url), username , password);
-
             }catch (Exception e){
                 e.printStackTrace();
                 Toast.makeText(getApplicationContext(),"Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
@@ -101,7 +107,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     public void makeServiceCall(Context context, String url,final String username, final String password){
         RequestQueue queue = Volley.newRequestQueue(context);
-
 
         try {
             StringRequest postRequest = new StringRequest(
@@ -153,6 +158,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     editor.putString("password", password);
                                     editor.commit();
 
+                                    //put user_details in user
                                     User user = User.deserialize(response);
                                     editor.putString("user_details", user.toJson());
                                     editor.commit();
