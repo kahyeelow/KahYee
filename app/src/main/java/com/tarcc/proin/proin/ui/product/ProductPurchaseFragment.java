@@ -177,7 +177,8 @@ public class ProductPurchaseFragment extends Fragment{
 
                 if(foundRepeatedProdID(prodID)){
                     AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
-                    builder.setMessage("You have already purchased the same product. Please choose another product.").setNegativeButton("Retry",null).create().show();
+                    builder.setMessage("You have already purchased the same product. Please choose another product.")
+                            .setNegativeButton("OK",null).create().show();
 
                 }
                 else

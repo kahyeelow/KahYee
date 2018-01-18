@@ -80,7 +80,6 @@
 
     </LinearLayout>
 
-    <include layout="@layout/content_show_product" />
 
 </android.support.design.widget.CoordinatorLayout>
     </layout>

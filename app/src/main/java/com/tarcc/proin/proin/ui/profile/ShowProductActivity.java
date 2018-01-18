@@ -14,7 +14,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.tarcc.proin.proin.R;
-import com.tarcc.proin.proin.databinding.ContentShowProductBinding;
 import com.tarcc.proin.proin.databinding.ActivityShowProductBinding;
 import com.tarcc.proin.proin.ui.BaseActivity;
 
