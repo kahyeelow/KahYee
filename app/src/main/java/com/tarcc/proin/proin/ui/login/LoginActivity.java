@@ -1,6 +1,6 @@
 package com.tarcc.proin.proin.ui.login;
 
-import android.app.Fragment;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,17 +10,10 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,13 +25,8 @@ import com.tarcc.proin.proin.R;
 import com.tarcc.proin.proin.databinding.ActivityLoginBinding;
 import com.tarcc.proin.proin.model.User;
 import com.tarcc.proin.proin.ui.MainActivity;
-import com.tarcc.proin.proin.ui.product.ProductPurchaseFragment;
-import com.tarcc.proin.proin.ui.profile.ChangePasswordActivity;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -144,7 +132,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                                     editor.putString("name", name);
                                     editor.commit();
-                                    editor.putString("nric", ic); //i pass it here, get it there
+                                    editor.putString("nric", ic);
                                     editor.commit();
                                     editor.putString("dob", dob);
                                     editor.commit();
